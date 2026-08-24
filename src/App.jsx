@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/common/Header";
 import Dashboard from "./components/dashboard/Dashboard";
 import ExpenseForm from "./components/expense/ExpenseForm";
@@ -6,14 +7,22 @@ import CategoryFilter from "./components/filters/CategoryFilter";
 import SearchBar from "./components/filters/SearchBar";
 
 function App() {
+  //Shared States
+  const [expenses, setExpenses] = useState([]);
+
+  //Handle CRUD
+  const handleAddExpense = (expense) => {
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+  };
+
   return (
     <div>
       <Header />
-      <Dashboard />
+      <Dashboard expenses={expenses} />
       <SearchBar />
       <CategoryFilter />
-      <ExpenseForm />
-      <ExpenseList />
+      <ExpenseForm onAddExpense={handleAddExpense} />
+      <ExpenseList expenses={expenses}/>
     </div>
   );
 }
