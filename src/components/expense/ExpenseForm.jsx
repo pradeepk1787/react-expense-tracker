@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { categories } from "../../data/categories";
+import getTodayDate from "../../utils/getTodayDate";
 
-function ExpenseForm({onAddExpense}) {
+function ExpenseForm({ onAddExpense }) {
   //form fields for user input
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(getTodayDate());
   const [description, setDescription] = useState("");
 
   //Handle input change events
@@ -31,16 +32,21 @@ function ExpenseForm({onAddExpense}) {
 
     //create Expense object
     const expense = {
-        id:crypto.randomUUID(),
-        amount:Number(amount),
-        category: category,
-        description: description,
-        date: date
-    }
+      id: crypto.randomUUID(),
+      amount: Number(amount),
+      category: category,
+      description: description,
+      date: date,
+    };
 
     //Notify to app to add the expense
     onAddExpense(expense);
 
+    //Reset the fields
+    setAmount("");
+    setCategory("");
+    setDescription("");
+    setDate(getTodayDate());
   };
 
   return (
@@ -61,6 +67,10 @@ function ExpenseForm({onAddExpense}) {
             onChange={handleCategoryChange}
             required
           >
+            <option value="" disabled>
+              Select Category
+            </option>
+            
             {categories.map((category) => (
               <option key={category}>{category}</option>
             ))}
@@ -82,9 +92,7 @@ function ExpenseForm({onAddExpense}) {
             required
           />
         </div>
-        <button type="submit">
-          Add
-        </button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
