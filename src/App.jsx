@@ -7,12 +7,43 @@ import CategoryFilter from "./components/filters/CategoryFilter";
 import SearchBar from "./components/filters/SearchBar";
 
 function App() {
-  //Shared States
+  //Shared State
   const [expenses, setExpenses] = useState([]);
 
+  //local state for app
+  const [editingExpense, setEditingExpense] = useState(null);
+
   //Handle CRUD
-  const handleAddExpense = (expense) => {
-    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+  const handleSubmitExpense = (expense) => {
+    //Edit
+    if (editingExpense != null) {
+      setExpenses((prevExpenses) =>
+        prevExpenses.map((currExpense) => {
+          return currExpense.id === expense.id ? expense : currExpense;
+        })
+      );
+
+      //reset editing expenses
+      setEditingExpense(null);
+    }
+    //Add
+    else {
+      setExpenses((prevExpenses) => [...prevExpenses, expense]);
+    }
+  };
+
+  const handleDeleteExpense = (expenseId) => {
+    setExpenses((currentExpenses) =>
+      currentExpenses.filter((expense) => expense.id !== expenseId)
+    );
+  };
+
+  const handleEditExpense = (expense) => {
+    setEditingExpense(expense);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingExpense(null);
   };
 
   return (
@@ -21,8 +52,16 @@ function App() {
       <Dashboard expenses={expenses} />
       <SearchBar />
       <CategoryFilter />
-      <ExpenseForm onAddExpense={handleAddExpense} />
-      <ExpenseList expenses={expenses}/>
+      <ExpenseForm
+        onSubmitExpense={handleSubmitExpense}
+        editingExpense={editingExpense}
+        onCancelEdit={handleCancelEdit}
+      />
+      <ExpenseList
+        expenses={expenses}
+        onDeleteExpense={handleDeleteExpense}
+        onEditExpense={handleEditExpense}
+      />
     </div>
   );
 }

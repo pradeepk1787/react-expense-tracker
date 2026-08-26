@@ -1,6 +1,6 @@
 import ExpenseItem from "./ExpenseItem";
 
-function ExpenseList({ expenses }) {
+function ExpenseList({ expenses, onDeleteExpense, onEditExpense }) {
   return (
     <div>
       {expenses.length === 0 ? (
@@ -8,7 +8,7 @@ function ExpenseList({ expenses }) {
       ) : (
         <ul>
           {expenses.map((expense) => (
-            <ExpenseItem key={expense.id} expense={expense}/>
+            <ExpenseItem key={expense.id} expense={expense} onDelete={onDeleteExpense} onEdit={onEditExpense}/>
           ))}
         </ul>
       )}

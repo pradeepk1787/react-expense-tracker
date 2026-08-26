@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "../../data/categories";
 import getTodayDate from "../../utils/getTodayDate";
 
-function ExpenseForm({ onAddExpense }) {
+function ExpenseForm({ onSubmitExpense, editingExpense, onCancelEdit }) {
   //form fields for user input
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -26,13 +26,20 @@ function ExpenseForm({ onAddExpense }) {
     setDescription(e.target.value);
   };
 
+  const resetForm = () => {
+    setAmount("");
+    setCategory("");
+    setDescription("");
+    setDate(getTodayDate());
+  };
+
   //handle Action Events
-  const handleAddExpense = (e) => {
+  const handleSubmitExpense = (e) => {
     e.preventDefault();
 
     //create Expense object
-    const expense = {
-      id: crypto.randomUUID(),
+    let expense = {
+      id: editingExpense != null ? editingExpense.id : crypto.randomUUID(),
       amount: Number(amount),
       category: category,
       description: description,
@@ -40,19 +47,26 @@ function ExpenseForm({ onAddExpense }) {
     };
 
     //Notify to app to add the expense
-    onAddExpense(expense);
+    onSubmitExpense(expense);
 
     //Reset the fields
-    setAmount("");
-    setCategory("");
-    setDescription("");
-    setDate(getTodayDate());
+    resetForm();
   };
+
+  //Set local states if form is editing
+  useEffect(() => {
+    if (editingExpense != null) {
+      setAmount(editingExpense.amount);
+      setCategory(editingExpense.category);
+      setDescription(editingExpense.description);
+      setDate(editingExpense.date);
+    }
+  }, [editingExpense]);
 
   return (
     <div>
       <h2>Add Details</h2>
-      <form onSubmit={handleAddExpense}>
+      <form onSubmit={handleSubmitExpense}>
         <div>
           <input
             type="number"
@@ -70,7 +84,7 @@ function ExpenseForm({ onAddExpense }) {
             <option value="" disabled>
               Select Category
             </option>
-            
+
             {categories.map((category) => (
               <option key={category}>{category}</option>
             ))}
@@ -92,7 +106,17 @@ function ExpenseForm({ onAddExpense }) {
             required
           />
         </div>
-        <button type="submit">Add</button>
+        <button type="submit">{editingExpense != null ? "Update" : "Add"}</button>
+        {editingExpense && (
+          <button
+            onClick={() => {
+              resetForm();
+              onCancelEdit();
+            }}
+          >
+            Cancel
+          </button>
+        )}
       </form>
     </div>
   );
