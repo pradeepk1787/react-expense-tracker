@@ -1,9 +1,9 @@
 function SummaryCard({ title, value }) {
   return (
-    <div>
+    <article className="summary-card">
       <h3>{title}</h3>
       <p>{value ?? "--"}</p>
-    </div>
+    </article>
   );
 }
 

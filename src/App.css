@@ -1,0 +1,23 @@
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: var(--space-6);
+  height: calc(100vh - 360px);
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    padding: var(--space-6);
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { categories } from "../../data/categories";
 import getTodayDate from "../../utils/getTodayDate";
+import "./ExpenseForm.css";
 
 function ExpenseForm({ onSubmitExpense, editingExpense, onCancelEdit }) {
   //form fields for user input
@@ -64,59 +65,80 @@ function ExpenseForm({ onSubmitExpense, editingExpense, onCancelEdit }) {
   }, [editingExpense]);
 
   return (
-    <div>
+    <div className="expense-form">
       <h2>Add Details</h2>
       <form onSubmit={handleSubmitExpense}>
-        <div>
-          <input
-            type="number"
-            placeholder="Please Enter Amount"
-            value={amount}
-            onChange={handleAmountChange}
-            required
-          />
-          <select
-            placeholder="Please Select Category"
-            value={category}
-            onChange={handleCategoryChange}
-            required
-          >
-            <option value="" disabled>
-              Select Category
-            </option>
+        <div className="form-fields">
+          <div className="form-group">
+            <label htmlFor="amount">Amount</label>
+            <input
+              id="amount"
+              type="number"
+              placeholder="Please Enter Amount"
+              value={amount}
+              onChange={handleAmountChange}
+              required
+            />
+          </div>
 
-            {categories.map((category) => (
-              <option key={category}>{category}</option>
-            ))}
-          </select>
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select
+              id="category"
+              value={category}
+              onChange={handleCategoryChange}
+              required
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
 
-          <input
-            type="date"
-            placeholder="Please Select Date"
-            value={date}
-            onChange={handleDateChange}
-            required
-          />
+              {categories.map((category) => (
+                <option key={category}>{category}</option>
+              ))}
+            </select>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Please Add Details"
-            value={description}
-            onChange={handleDescriptionChange}
-            required
-          />
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
+            <input
+              id="date"
+              type="date"
+              placeholder="Please Select Date"
+              value={date}
+              onChange={handleDateChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="details">Details</label>
+            <input
+              id="details"
+              type="text"
+              placeholder="Please Add Details"
+              value={description}
+              onChange={handleDescriptionChange}
+              required
+            />
+          </div>
         </div>
-        <button type="submit">{editingExpense != null ? "Update" : "Add"}</button>
-        {editingExpense && (
-          <button
-            onClick={() => {
-              resetForm();
-              onCancelEdit();
-            }}
-          >
-            Cancel
+        <div className="form-actions">
+          <button type="submit">
+            {editingExpense != null ? "Update" : "Add"}
           </button>
-        )}
+          {editingExpense && (
+            <button
+              type="button"
+              onClick={() => {
+                resetForm();
+                onCancelEdit();
+              }}
+            >
+              Cancel
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

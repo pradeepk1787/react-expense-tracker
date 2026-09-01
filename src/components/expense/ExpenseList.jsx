@@ -1,6 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import CategoryFilter from "../filters/CategoryFilter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import "./ExpenseList.css";
 
 function ExpenseList({ expenses, onDeleteExpense, onEditExpense }) {
   //local state
@@ -17,7 +18,8 @@ function ExpenseList({ expenses, onDeleteExpense, onEditExpense }) {
   });
 
   return (
-    <div>
+    <div className="expense-list">
+      <h2>Expenses</h2>
       <CategoryFilter
         selectedCategory={selectedCategory}
         setSelectedCategory={onCategorySelection}

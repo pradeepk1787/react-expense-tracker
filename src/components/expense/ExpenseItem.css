@@ -1,0 +1,46 @@
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+
+}
+
+.expense-actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-shrink: 0;
+}
+
+.expense-actions button {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(-radius-sm);
+    font: inherit;
+    font-size: var(--font-size-secondary);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.expense-actions button:first-child {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+}
+
+.expense-actions button:first-child:hover {
+    background: var(--color-background);
+    border-color: var(--color-primary);
+}
+
+.expense-actions button:last-child {
+    background: var(--color-surface);
+    color: var(--color-danger);
+    border: 1px solid var(--color-border);
+}
+
+.expense-actions button:last-child:hover {
+    background: #fef2f2;
+    border-color: var(--color-danger);
+}

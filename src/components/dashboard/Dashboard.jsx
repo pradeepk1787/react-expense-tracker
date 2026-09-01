@@ -1,6 +1,7 @@
 import { dashboardCards } from "../../data/dashboardCard";
 import formatCurrency from "../../utils/formatCurrency";
 import SummaryCard from "./SummaryCard.jsx";
+import "./Dashboard.css";
 
 function Dashboard({ expenses }) {
   //Total Expenses
@@ -54,9 +55,8 @@ function Dashboard({ expenses }) {
   };
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <div>
+    <section className="dashboard">
+      <div className="summary-cards">
         {dashboardCards.map((card) => (
           <SummaryCard
             key={card.id}
@@ -65,7 +65,7 @@ function Dashboard({ expenses }) {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
