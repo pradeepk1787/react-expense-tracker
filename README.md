@@ -8,7 +8,7 @@ The application demonstrates component-based architecture, CRUD operations, cont
 
 ## Live Demo
 
-Live Application: [ADD LIVE URL]
+Live Application: https://react-expense-tracker-sigma-brown.vercel.app/
 
 GitHub Repository: https://github.com/pradeepk1787/react-expense-tracker
 
