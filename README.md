@@ -145,7 +145,11 @@ expense-tracker/
 ├── package.json
 ├── vite.config.js
 └── README.md
-What I Learned
+```
+
+---
+
+## What I Learned
 
 During this project, I practiced:
 
@@ -167,28 +171,46 @@ During this project, I practiced:
 * Deploying React applications using Vercel
 * Getting Started
 
+---
+
+## Getting Started
+
 Clone the repository:
 
+```bash
 git clone https://github.com/pradeepk1787/react-expense-tracker.git
+```
 
 Navigate to the project:
 
+```bash
 cd expense-tracker
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
+
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
 Create a production build:
 
+```bash
 npm run build
-Author
+```
 
-Pradeep Kamble
+---
+
+## Author
+
+**Pradeep Kamble**
 
 GitHub: https://github.com/pradeepk1787
 
@@ -196,26 +218,33 @@ Portfolio: https://react-portfolio-eight-beta-69.vercel.app/
 
 Email: pradeepkamble1787@gmail.com
 
-Project Status
+---
+
+## Project Status
 
 ✅ Version 1.0 Completed
 
 This project is feature-complete and serves as part of my frontend development learning roadmap.
 
-Future Enhancements
+---
+
+## Future Enhancements
 
 Possible future improvements:
 
-Expense search functionality
-Expense sorting
-Advanced filtering
-Expense charts and visualizations
-Monthly expense summaries
-Additional dashboard analytics
-Backend integration
-User authentication
-Cloud-based expense persistence
-License
+* Expense search functionality
+* Expense sorting
+* Advanced filtering
+* Expense charts and visualizations
+* Monthly expense summaries
+* Additional dashboard analytics
+* Backend integration
+* User authentication
+* Cloud-based expense persistence
+
+---
+
+## License
 
 This project is created for learning and portfolio purposes.
 
