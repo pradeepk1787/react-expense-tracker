@@ -149,23 +149,23 @@ What I Learned
 
 During this project, I practiced:
 
-Managing shared state across multiple React components
-Designing appropriate state ownership and data flow
-Building CRUD functionality using React state
-Creating controlled forms and handling form events
-Working with derived state instead of storing duplicate values
-Implementing category-based filtering
-Persisting application data using browser localStorage
-Handling localStorage read and write errors
-Separating storage logic into reusable utility functions
-Organizing components using a feature-oriented folder structure
-Creating reusable UI components
-Designing responsive layouts using Flexbox and CSS Grid
-Structuring CSS using reusable variables and consistent spacing
-Debugging responsive layout and scrolling issues
-Managing source code using Git and GitHub
-Deploying React applications using Vercel
-Getting Started
+* Managing shared state across multiple React components
+* Designing appropriate state ownership and data flow
+* Building CRUD functionality using React state
+* Creating controlled forms and handling form events
+* Working with derived state instead of storing duplicate values
+* Implementing category-based filtering
+* Persisting application data using browser localStorage
+* Handling localStorage read and write errors
+* Separating storage logic into reusable utility functions
+* Organizing components using a feature-oriented folder structure
+* Creating reusable UI components
+* Designing responsive layouts using Flexbox and CSS Grid
+* Structuring CSS using reusable variables and consistent spacing
+* Debugging responsive layout and scrolling issues
+* Managing source code using Git and GitHub
+* Deploying React applications using Vercel
+* Getting Started
 
 Clone the repository:
 
