@@ -95,10 +95,9 @@ GitHub Repository: https://github.com/pradeepk1787/react-expense-tracker
 expense-tracker/
 │
 ├── screenshots/
-│   ├── dashboard.png
-│   ├── expense-form.png
-│   ├── expense-list.png
-│   └── mobile.png
+│   ├── desktop.png
+│   ├── mobile-1.png
+│   └── mobile-2.png
 │
 ├── public/
 │
